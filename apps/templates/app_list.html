@@ -25,7 +25,17 @@
                 <td> <a href="{% url 'app_detail' app.pk %}">{{ app.name }}</a></td>
                 <th class="mobile-header">{% trans "Created at" %}</th><td>{{ app.created_at }}</td>
                 <th class="mobile-header">{% trans "Updated At" %}</th><td>{{ app.updated_at }}</td>
-                <th class="mobile-header">{% trans "Run Test" %}</th><td><a href="{% url 'run_appium_test' app.pk %}">{% trans "Run Test" %}</a></td>
+                <th class="mobile-header">{% trans "Run Test" %}</th>
+                    <td>
+                        <a href="{% url 'run_appium_test' app.pk %}" class="run-test-link" data-app-id="{{ app.pk }}" onclick="runTest(event, {{ app.pk }})">
+                            {% trans "Run Test" %}
+                        </a>
+                        <div id="spinner-container-{{ app.pk }}" class="spinner-container" style="display:none;">
+                            <svg class="spinner" viewBox="0 0 50 50">
+                                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                            </svg>
+                        </div>
+                    </td>
                 <th class="mobile-header">{% trans "Edit" %}</th><td><a href="{% url 'app_edit' app.pk %}">{% trans "Edit" %}</a></td>
                 <th class="mobile-header">{% trans "Delete" %}</th><td><a href="{% url 'app_delete' app.pk %}">{% trans "Delete" %}</a></td>
             </tr>

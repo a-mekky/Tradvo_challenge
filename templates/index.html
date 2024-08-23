@@ -14,7 +14,6 @@
     {% block styles %}
     <link rel="stylesheet" href="{% static 'styles/app.css' %}"/>
     {%endblock%}
-    <script src="{% static 'js/accessibility.js' %}" defer></script>
     <title>{% trans "Tradvo Challenge Task" %}</title>
 </head>
 
@@ -34,6 +33,8 @@
 {% endblock content %}
 </body>
 {% block scripts %}
+<script src="{% static 'js/accessibility.js' %}" defer></script>
+<script src="{% static 'js/app.js' %}" defer></script>
 
 {% endblock scripts %}
 </html>

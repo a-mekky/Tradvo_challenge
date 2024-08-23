@@ -486,3 +486,32 @@ table {
     width: 100px;
     margin: 10px;
 }
+
+
+/* Loading */
+.spinner-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+.spinner .path {
+    stroke: #007bff; /* Adjust color as needed */
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+    0% { stroke-dasharray: 1, 150; stroke-dashoffset: 0; }
+    50% { stroke-dasharray: 90, 150; stroke-dashoffset: -35; }
+    100% { stroke-dasharray: 90, 150; stroke-dashoffset: -125; }
+}

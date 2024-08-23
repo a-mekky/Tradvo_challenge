@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib import messages
 from django.core.management import call_command
-import subprocess
+from django.db import transaction
 from io import StringIO
 
 from .models import App
@@ -73,10 +73,15 @@ def app_add(request):
     if request.method == "POST":
         form = AddAppForm(request.POST, request.FILES)
         if form.is_valid():
-            app = form.save(commit=False)
-            app.uploaded_by = request.user
-            app.save()
-            return redirect('app_detail', pk=app.pk)
+            try:
+                with transaction.atomic():
+                    app = form.save(commit=False)
+                    app.uploaded_by = request.user
+                    app.save()
+                    return redirect('app_detail', pk=app.pk)
+            except Exception as e:
+                # Handle the exception as needed, e.g., log it
+                form.add_error(None, str(e))
     else:
         form = AddAppForm()
     return render(request, 'app_form.html', {'form': form})
@@ -109,16 +114,21 @@ def app_edit(request, pk):
     if request.method == "POST":
         form = EditAppForm(request.POST, request.FILES, instance=app)
         if form.is_valid():
-            app = form.save(commit=False)
-            # Only update file fields if new files are provided
-            if 'apk_file_path' in request.FILES:
-                app.apk_file_path = request.FILES['apk_file_path']
-            if 'first_screen_screenshot_path' in request.FILES:
-                app.first_screen_screenshot_path = request.FILES['first_screen_screenshot_path']
-            if 'second_screen_screenshot_path' in request.FILES:
-                app.second_screen_screenshot_path = request.FILES['second_screen_screenshot_path']
-            app.save()
-            return redirect('app_detail', pk=app.pk)
+            try:
+                with transaction.atomic():
+                    app = form.save(commit=False)
+                    # Only update file fields if new files are provided
+                    if 'apk_file_path' in request.FILES:
+                        app.apk_file_path = request.FILES['apk_file_path']
+                    if 'first_screen_screenshot_path' in request.FILES:
+                        app.first_screen_screenshot_path = request.FILES['first_screen_screenshot_path']
+                    if 'second_screen_screenshot_path' in request.FILES:
+                        app.second_screen_screenshot_path = request.FILES['second_screen_screenshot_path']
+                    app.save()
+                    return redirect('app_detail', pk=app.pk)
+            except Exception as e:
+                # Handle the exception as needed, e.g., log it
+                form.add_error(None, str(e))
     else:
         form = EditAppForm(instance=app)
     return render(request, 'app_form.html', {'form': form})

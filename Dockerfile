@@ -38,17 +38,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | b
     && npm install -g npm@latest \
     && npm install -g appium
 
-# Install nvm
-ENV NVM_DIR /root/.nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash \
-    && bash -c "source $NVM_DIR/nvm.sh && nvm install --lts && nvm alias default lts/*" \
-    && rm -rf $NVM_DIR/.cache/src/* \
-
-
 
 # Set environment variables for Java & Android SDK
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-ENV PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator
 
 # Set the working directory in the container
 WORKDIR /app

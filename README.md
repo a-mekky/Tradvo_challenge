@@ -111,6 +111,11 @@ Ensure you have Docker and Docker Compose installed. Follow the installation ste
 - **High Contrast Mode:** Toggle high contrast mode for better visibility.
 - **Font Size Adjustment:** Select different font sizes for accessibility.
 
+### Multilingual Support
+
+- **Language Switch:** Option to switch between English and French languages. Users can select their preferred language, and the application will dynamically update to reflect the selected language.
+
+
 ### Automated Testing
 
 - **User Management Tests:** Includes registration, login, and user-related actions.

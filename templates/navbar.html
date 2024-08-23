@@ -1,0 +1,83 @@
+
+{% load i18n %}
+
+<header>
+    <div class="container-fluid">
+        <div class="navb-logo">
+            {% trans "Tradvo" %}
+        </div>
+        <div class="accessibility">
+            <button id="contrast-toggle">{% trans "Toggle High Contrast" %}</button>
+             <select id="font-size-selector" name="fontsize">>
+                <option value="small">
+                    {% trans "Small Font" %}
+                </option>
+                <option value="medium">
+                    {% trans "Medium Font" %}
+                 </option>
+                 <option value="large">
+                    {% trans "Large Font" %}
+                 </option>
+             </select>
+        </div>
+
+        <div>
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                <select name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                    {% endfor %}
+
+                </select>
+                <input type="submit" value="{% trans "Change Language" %}">
+            </form>
+        </div>
+
+        <div class="navb-items">
+            <div class="item">
+                <a href="/">{% trans "Home" %}</a>
+            </div>
+            {% if not request.user.is_authenticated %}
+            <div class="item">
+                <a href="{% url 'login' %}">{% trans "Login" %}</a>
+            </div>
+            {% elif request.user.is_authenticated %}
+            {% trans "Welcome" %} {{ request.user }}
+            <div class="item">
+                <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
+            </div>
+            {% endif %}
+        </div>
+        <!-- Button Trigger Modal Start -->
+        <div class="mobile-toggle">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#navModal">
+                <i class="bi bi-list"></i>
+            </a>
+        </div>
+        <!-- Modal Trigger Modal End -->
+        <!-- Modal Start -->
+        <div class="modal fade" id="navModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p>{% trans "Logo" %}</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-line">
+                            <i class="bi bi-house"></i><a href="/">{% trans "Home" %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal End -->
+    </div>
+</header>

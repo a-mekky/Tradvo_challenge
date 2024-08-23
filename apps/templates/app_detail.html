@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% load i18n %}
+
+{% block title %} {{ app.name }} {% endblock %}
+
+{% block content %}
+
+    <h1>{{ app.name }}</h1>
+
+    <p>{% trans "APK Path" %}: {{ app.apk_file_path.url }}</p>
+    <p>{% trans "Uploaded By" %}: {{ app.uploaded_by.username }}</p>
+    <p>{% trans "Created At" %}: {{ app.created_at }}</p>
+    <p>{% trans "Updated At" %}: {{ app.updated_at }}</p>
+    <p>{% trans "Screen changed" %}: {{ app.screen_changed }}</p>
+
+<div class="flex-row">
+
+    {% if app.first_screen_screenshot_path %}
+        <div>
+            <h3>{% trans "First Screenshot" %}</h3>
+            <img src="{{ app.first_screen_screenshot_path.url }}" alt="{% trans 'First Screenshot' %}">
+        </div>
+    {% endif %}
+
+    {% if app.second_screen_screenshot_path %}
+        <div>
+            <h3>{% trans "Second Screenshot" %}</h3>
+            <img src="{{ app.second_screen_screenshot_path.url }}" alt="{% trans 'Second Screenshot' %}">
+        </div>
+    {% endif %}
+
+    {% if app.video_recording_path %}
+        <div>
+            <h3>{% trans "Video Recording" %}</h3>
+            <video width="320" height="240" controls>
+                <source src="{{ app.video_recording_path.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    {% endif %}
+
+</div>
+    <a href="{% url 'app_edit' app.pk %}">{% trans "Edit" %}</a>
+    <a href="{% url 'app_delete' app.pk %}">{% trans "Delete" %}</a>
+    <a href="{% url 'app_list' %}">{% trans "Back to List" %}</a>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "My Apps" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "My Apps" %}</h1>
+    <a href="{% url 'app_add' %}">{% trans "Add New App" %}</a>
+    {% if apps %}
+    <table>
+        <thead>
+            <tr class="table-headers">
+                <th>{% trans "Name" %}</th>
+                <th>{% trans "Created At" %}</th>
+                <th>{% trans "Updated At" %}</th>
+                <th>{% trans "RUN Test" %}</th>
+                <th>{% trans "Edit" %}</th>
+                <th>{% trans "Delete" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in apps %}
+            <tr>
+                <td> <a href="{% url 'app_detail' app.pk %}">{{ app.name }}</a></td>
+                <th class="mobile-header">{% trans "Created at" %}</th><td>{{ app.created_at }}</td>
+                <th class="mobile-header">{% trans "Updated At" %}</th><td>{{ app.updated_at }}</td>
+                <th class="mobile-header">{% trans "Run Test" %}</th><td><a href="{% url 'run_appium_test' app.pk %}">{% trans "Run Test" %}</a></td>
+                <th class="mobile-header">{% trans "Edit" %}</th><td><a href="{% url 'app_edit' app.pk %}">{% trans "Edit" %}</a></td>
+                <th class="mobile-header">{% trans "Delete" %}</th><td><a href="{% url 'app_delete' app.pk %}">{% trans "Delete" %}</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% endblock %}

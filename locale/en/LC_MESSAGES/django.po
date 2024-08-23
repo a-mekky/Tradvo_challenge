@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-22 13:01+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/forms.py:13 apps/templates/login.html:14
+msgid "Username"
+msgstr "Username"
+
+#: apps/forms.py:14 apps/templates/login.html:18
+msgid "Password"
+msgstr "Password"
+
+#: apps/forms.py:15
+msgid "Confirm Password"
+msgstr "Password"
+
+#: apps/forms.py:18
+msgid "Enter your username."
+msgstr "Enter your username."
+
+#: apps/forms.py:19
+msgid "Enter your password."
+msgstr "Enter your password."
+
+#: apps/forms.py:20
+msgid "Enter the same password as above, for verification."
+msgstr "Enter the same password as above, for verification."
+
+#: apps/forms.py:23
+msgid "The two password fields didn’t match."
+msgstr "The two password fields didn’t match."
+
+#: apps/forms.py:37
+msgid "App Name"
+msgstr "Name"
+
+#: apps/forms.py:38
+msgid "APK File Path"
+msgstr "APK Path"
+
+#: apps/forms.py:39
+msgid "First Screen Screenshot"
+msgstr "First Screen Screenshot"
+
+#: apps/forms.py:40
+msgid "Second Screen Screenshot"
+msgstr "Second Screen Screenshot"
+
+#: apps/forms.py:43
+msgid "Enter the name of the app."
+msgstr "Enter the name of the app."
+
+#: apps/forms.py:44
+msgid "Upload the APK file for the app."
+msgstr "Upload the APK file for the app."
+
+#: apps/forms.py:45
+msgid "Upload the first screen screenshot."
+msgstr "Upload the first screen screenshot."
+
+#: apps/forms.py:46
+msgid "Upload the second screen screenshot."
+msgstr "Upload the second screen screenshot."
+
+#: apps/models.py:8
+msgid "Yes"
+msgstr "Yes"
+
+#: apps/models.py:9
+msgid "No"
+msgstr "No"
+
+#: apps/templates/app_confirm_delete.html:5
+msgid "Delete App"
+msgstr "Delete App"
+
+#: apps/templates/app_confirm_delete.html:9
+msgid "Are you sure you want to delete"
+msgstr "Are you sure you want to delete"
+
+#: apps/templates/app_confirm_delete.html:12
+msgid "Yes, delete"
+msgstr "Yes, delete"
+
+#: apps/templates/app_confirm_delete.html:14
+msgid "Cancel"
+msgstr "Cancel"
+
+#: apps/templates/app_detail.html:11
+msgid "APK Path"
+msgstr "APK Path"
+
+#: apps/templates/app_detail.html:12
+msgid "Uploaded By"
+msgstr "Uploaded By"
+
+#: apps/templates/app_detail.html:13 apps/templates/app_list.html:15
+msgid "Created At"
+msgstr "Created At"
+
+#: apps/templates/app_detail.html:14 apps/templates/app_list.html:16
+#: apps/templates/app_list.html:27
+msgid "Updated At"
+msgstr "Updated At"
+
+#: apps/templates/app_detail.html:15
+msgid "Screen changed"
+msgstr "Screen changed"
+
+#: apps/templates/app_detail.html:21 apps/templates/app_detail.html:22
+msgid "First Screenshot"
+msgstr "First Screenshot"
+
+#: apps/templates/app_detail.html:28 apps/templates/app_detail.html:29
+msgid "Second Screenshot"
+msgstr "Second Screenshot"
+
+#: apps/templates/app_detail.html:35
+msgid "Video Recording"
+msgstr "Video Recording"
+
+#: apps/templates/app_detail.html:44 apps/templates/app_form.html:9
+#: apps/templates/app_list.html:18 apps/templates/app_list.html:29
+msgid "Edit"
+msgstr "Edit"
+
+#: apps/templates/app_detail.html:45 apps/templates/app_list.html:19
+#: apps/templates/app_list.html:30
+msgid "Delete"
+msgstr "Delete"
+
+#: apps/templates/app_detail.html:46 apps/templates/app_form.html:15
+msgid "Back to List"
+msgstr "Back to List"
+
+#: apps/templates/app_form.html:5 apps/templates/app_list.html:5
+#: apps/templates/app_list.html:8
+msgid "My Apps"
+msgstr "My Apps"
+
+#: apps/templates/app_form.html:9
+msgid "Add"
+msgstr "Add"
+
+#: apps/templates/app_form.html:9
+msgid "App"
+msgstr "App"
+
+#: apps/templates/app_form.html:13
+msgid "Save"
+msgstr "Save"
+
+#: apps/templates/app_list.html:9
+msgid "Add New App"
+msgstr "Add New App"
+
+#: apps/templates/app_list.html:14
+msgid "Name"
+msgstr "Name"
+
+#: apps/templates/app_list.html:17
+msgid "RUN Test"
+msgstr "RUN Test"
+
+#: apps/templates/app_list.html:26
+msgid "Created at"
+msgstr "Created at"
+
+#: apps/templates/app_list.html:28
+msgid "Run Test"
+msgstr "Run Test"
+
+#: apps/templates/login.html:5 apps/templates/login.html:9
+#: apps/templates/login.html:20 templates/navbar.html:49
+msgid "Login"
+msgstr "Login"
+
+#: apps/templates/login.html:23
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+#: apps/templates/login.html:23
+msgid "Register here"
+msgstr "Register here"
+
+#: apps/templates/register.html:5 apps/templates/register.html:9
+#: apps/templates/register.html:23
+msgid "Register"
+msgstr "Register"
+
+#: apps/templates/register.html:25
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+#: apps/templates/register.html:25
+msgid "Login here"
+msgstr "Login here"
+
+#: templates/index.html:18
+msgid "Tradvo Challenge Task"
+msgstr "Tradvo Challenge Task"
+
+#: templates/navbar.html:7
+msgid "Tradvo"
+msgstr "Tradvo"
+
+#: templates/navbar.html:10
+msgid "Toggle High Contrast"
+msgstr "Toggle High Contrast"
+
+#: templates/navbar.html:13
+msgid "Small Font"
+msgstr "Small Font"
+
+#: templates/navbar.html:16
+msgid "Medium Font"
+msgstr "Medium Font"
+
+#: templates/navbar.html:19
+msgid "Large Font"
+msgstr "Large Font"
+
+#: templates/navbar.html:39
+msgid "Change Language"
+msgstr "Change Language"
+
+#: templates/navbar.html:45 templates/navbar.html:75
+msgid "Home"
+msgstr "Home"
+
+#: templates/navbar.html:52
+msgid "Welcome"
+msgstr "Welcome"
+
+#: templates/navbar.html:54
+msgid "Logout"
+msgstr "Logout"
+
+#: templates/navbar.html:70
+msgid "Logo"
+msgstr "Logo"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "Français"
+#~ msgstr "Français"
+
+#~ msgid "This Url does not exist. Check spelling."
+#~ msgstr "This URL does not exist. Check spelling."

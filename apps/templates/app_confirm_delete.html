@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% load i18n %}
+
+{% block title %}{% trans "Delete App" %}{% endblock %}
+
+
+{% block content %}
+    <h1>{% trans "Are you sure you want to delete" %} "{{ app.name }}"?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">{% trans "Yes, delete" %}</button>
+    </form>
+    <a href="{% url 'app_list' %}">{% trans "Cancel" %}</a>
+
+
+{% endblock %}

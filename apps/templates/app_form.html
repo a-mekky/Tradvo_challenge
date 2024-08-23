@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% load i18n %}
+
+{% block title %} {% trans "My Apps" %} {% endblock %}
+
+{% block content %}
+
+    <h1>{% if form.instance.pk %}{% trans "Edit" %}{% else %}{% trans "Add" %}{% endif %} {% trans "App" %}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% trans "Save" %}</button>
+    </form>
+    <a href="{% url 'app_list' %}">{% trans "Back to List" %}</a>
+
+{% endblock %}

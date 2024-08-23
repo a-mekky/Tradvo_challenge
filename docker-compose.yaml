@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: django_appium
+    volumes:
+      - .:/app
+      - shared-data:/app/media
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=app_manager.settings
+      - DB_NAME=tradvo_schema
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_HOST=db
+      - DB_PORT=3306
+      - EMULATOR_DEVICE=emulator-5554
+      - adb_port=5555
+      - appium_port=4723
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app_manager_default
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      MYSQL_DATABASE: tradvo_schema
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-p$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - app_manager_default
+
+
+volumes:
+  db_data:
+  shared-data:
+
+networks:
+  app_manager_default:
+    name: app_manager_default

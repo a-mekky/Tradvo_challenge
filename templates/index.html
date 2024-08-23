@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+<html>
+
+{% load i18n %}
+{% load static %}
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}"/>
+    {%endblock%}
+    <script src="{% static 'js/accessibility.js' %}" defer></script>
+    <title>{% trans "Tradvo Challenge Task" %}</title>
+</head>
+
+<body>
+
+{% include 'navbar.html' %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert">
+    <span class="alert__message">{{message}}</span>
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+{% endfor %}
+{% endif %}
+{% block content %}
+
+{% endblock content %}
+</body>
+{% block scripts %}
+
+{% endblock scripts %}
+</html>
